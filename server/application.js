@@ -11,7 +11,15 @@ var config = require('./config');
 
 var app = express();
 var resources = express();
+
+var knexConfig = require('../knexfile.js')[config.env];
+var knex = require('knex')(knexConfig);
+var bookshelf = require('bookshelf')(knex);
+
 resources.use(express.static(config.public));
+
+app.set('knex', knex);
+app.set('bookshelf', bookshelf);
 
 if (config.env === 'development') {
   resources.use(express.static(path.join(__dirname, '../app')));

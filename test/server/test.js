@@ -1,6 +1,6 @@
 'use strict';
 
-// NODE_ENV=test ./node_modules/.bin/knex migrate:latest
+process.env.NODE_ENV = 'development'; 
 
 var _ = require('lodash');
 var app = require('../../server/application');
@@ -26,7 +26,7 @@ describe('api', function() {
 
   beforeEach(function(done) {
     knex('statements').delete().then(function() {
-      return knex.raw('alter sequence statements_id_restart');
+      return knex.raw('alter sequence confessions_id_seq restart');
     }).then(function() { done(); }, done);
   });
 

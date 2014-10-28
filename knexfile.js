@@ -10,12 +10,12 @@ var connection = {
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'postgresql',
     connection: connection
   },
 
   staging: {
-    client: 'pg',
+    client: 'postgresql',
     connection: connection,
     pool: {
       min: 2,
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: connection,
     pool: {
       min: 2,
