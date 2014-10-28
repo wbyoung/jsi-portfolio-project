@@ -26,7 +26,7 @@ describe('api', function() {
 
   beforeEach(function(done) {
     knex('statements').delete().then(function() {
-      return knex.raw('alter sequence confessions_id_seq restart');
+      return knex.raw('alter sequence statements_id_seq restart');
     }).then(function() { done(); }, done);
   });
 
